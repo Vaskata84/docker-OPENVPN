@@ -2,7 +2,7 @@
 <p>FROM debian:buster</p>
 <p># Install required packages<br />RUN apt update &amp;&amp; \<br />apt install openvpn curl -y</p>
 <p># Enable TUN/TAP device<br />RUN mkdir -p /dev/net &amp;&amp; \<br />mknod /dev/net/tun c 10 200 &amp;&amp; \<br />chmod 600 /dev/net/tun</p>
-<p># Copy OpenVPN configuration file<br />COPY vpn/VPN-myconfig.ovpn /vpn/VPN-BULSAT.ovpn</p>
+<p># Copy OpenVPN configuration file<br />COPY vpn/VPN-myconfig.ovpn /vpn/myconfig.ovpn</p>
 <p>ENTRYPOINT ["openvpn", "--config", "/vpn/VPN-myconfig.ovpn"]</p>
 <p>==========================================================<br />#cat vpn/VPN-myconfig.ovpn<br />client<br />dev tun<br />proto tcp<br />remote XX.XX.XX.XX 1194<br />resolv-retry infinite<br />nobind<br />key-direction 1<br />tls-client<br />persist-key<br />persist-tun<br />ns-cert-type server<br />comp-lzo <br />verb 5</p>
 <p>&lt;ca&gt;<br />-----BEGIN CERTIFICATE-----<br />XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
